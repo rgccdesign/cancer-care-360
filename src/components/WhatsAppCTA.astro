@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { WHATSAPP_URL } from '../config/site';
+interface Props { label: string; class?: string; arrow?: boolean }
+const {label, class: className = '', arrow = true} = Astro.props;
+---
+<a class:list={['button', 'whatsapp-cta', className]} href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><span class="whatsapp-content"><WhatsAppIcon/><span class="whatsapp-label">{label}</span></span>{arrow && <Icon name="arrow" size={24}/>}<span class="sr-only">(WhatsApp, opens in a new tab)</span></a>
+<style>
+.whatsapp-content{display:inline-flex;align-items:center;gap:10px;min-width:0}.whatsapp-label{min-width:0}
+</style>

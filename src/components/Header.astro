@@ -1,5 +1,6 @@
 ---
 import Brand from './Brand.astro';
+import WhatsAppCTA from './WhatsAppCTA.astro';
 import { navigation } from '../config/site';
 const pathname = Astro.url.pathname;
 ---
@@ -9,7 +10,7 @@ const pathname = Astro.url.pathname;
     <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
     <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
       {navigation.map(({label, href}) => <a href={href} class:list={['nav-link', {active: href === '/' ? pathname === '/' : pathname.startsWith(href)}]} aria-current={(href === '/' ? pathname === '/' : pathname.startsWith(href)) ? 'page' : undefined}>{label}</a>)}
-      <a class="button nav-contact" href="/contact/">Contact Us</a>
+      <WhatsAppCTA label="Contact Us" class="nav-contact" arrow={false}/>
     </nav>
   </div>
 </header>

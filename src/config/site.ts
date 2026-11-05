@@ -1,4 +1,5 @@
 import brandAssets from './brand-assets.json';
+export const WHATSAPP_URL = 'https://wa.me/85247503485';
 /** Public settings only. Never put credentials or patient information here. */
 export const site = {
   name: 'Cancer Care 360',
@@ -12,8 +13,8 @@ export const site = {
   endorsementLogo: '/images/brand/cancer-a-z.svg',
   facebook: 'https://www.facebook.com/profile.php?id=61595618420291',
   email: null as string | null,
-  // International digits only, without a leading +, spaces or punctuation.
-  whatsapp: null as string | null,
+  // Derived for compatibility; edit WHATSAPP_URL above to change the destination.
+  whatsapp: WHATSAPP_URL.split('/').at(-1)!,
 };
 
 export const navigation = [

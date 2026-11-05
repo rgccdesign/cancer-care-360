@@ -71,8 +71,14 @@ test('mobile menu supports toggle, Escape and navigation', async ({ page }) => {
   await expect(nav).toBeHidden();
   await expect(toggle).toBeFocused();
   await toggle.click();
-  await nav.getByRole('link', { name: 'Contact Us', exact: true }).click();
-  await expect(page).toHaveURL(/\/contact\/$/);
+  await page.context().route('https://wa.me/**', route => route.fulfill({body:'<html><title>WhatsApp test</title></html>',contentType:'text/html'}));
+  const popupPromise = page.waitForEvent('popup');
+  await nav.getByRole('link', { name: /^Contact Us/ }).click();
+  const popup = await popupPromise;
+  await popup.waitForLoadState();
+  await expect(popup).toHaveURL('https://wa.me/85247503485');
+  await popup.close();
+  await expect(page).toHaveURL('/');
   await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeHidden();
 });
 
@@ -109,7 +115,7 @@ test('contact exposes the official channel without a pretend submission form', a
   await page.goto('/contact/');
   await expect(page.locator('.contact-channel').first()).toHaveAttribute('href', 'https://www.facebook.com/profile.php?id=61595618420291');
   await expect(page.locator('form')).toHaveCount(0);
-  await expect(page.locator('a[href^="https://wa.me/"]')).toHaveCount(0);
+  await expect(page.locator('.contact-whatsapp .whatsapp-cta')).toHaveAttribute('href','https://wa.me/85247503485');
   await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
 });
 
@@ -205,4 +211,38 @@ test('internal hero imagery and library controls remain separate at requested wi
     await page.goto('/healthcare-professionals/');
     await page.screenshot({path:testInfo.outputPath(`professional-hero-${width}.png`)});
   }
+});
+
+
+test('all WhatsApp enquiry buttons share the number, logo and safe external attributes', async ({page}) => {
+  for(const route of routes) {
+    await page.goto(route);
+    const buttons=page.locator('.whatsapp-cta');
+    expect(await buttons.count()).toBeGreaterThan(0);
+    for(const button of await buttons.all()) {
+      await expect(button).toHaveAttribute('href','https://wa.me/85247503485');
+      await expect(button).toHaveAttribute('target','_blank');
+      await expect(button).toHaveAttribute('rel','noopener noreferrer');
+      await expect(button.locator('.whatsapp-content > .whatsapp-icon')).toHaveCount(1);
+      await expect(button.locator('.whatsapp-icon')).toHaveAttribute('aria-hidden','true');
+      expect(await button.locator('.whatsapp-icon').evaluate(el=>getComputedStyle(el).width)).toBe('20px');
+    }
+    await expect(page.locator('a.button[href="/contact/"]')).toHaveCount(0);
+    await expect(page.getByRole('navigation',{name:'Footer navigation'}).getByRole('link',{name:'Contact',exact:true})).toHaveAttribute('href','/contact/');
+  }
+});
+
+test('homepage contact CTA opens WhatsApp from the keyboard without navigating the website', async ({page}) => {
+  await page.context().route('https://wa.me/**', route => route.fulfill({body:'<html><title>WhatsApp test</title></html>',contentType:'text/html'}));
+  await page.goto('/');
+  const button=page.locator('.contact-banner .whatsapp-cta');
+  await button.focus();
+  await expect(button).toBeFocused();
+  const popupPromise=page.waitForEvent('popup');
+  await button.press('Enter');
+  const popup=await popupPromise;
+  await popup.waitForLoadState();
+  await expect(popup).toHaveURL('https://wa.me/85247503485');
+  await popup.close();
+  await expect(page).toHaveURL('/');
 });

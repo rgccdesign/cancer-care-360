@@ -33,3 +33,11 @@ Original PNGs are still required to finish official logo/favicon replacement. Cu
 The static production build passed with 18 HTML pages. Final type check: 39 files, no errors, warnings or hints. All 35 browser tests passed, including shared heroes on all internal content routes, four viewport sizes, text/image separation, original secondary SVG loading, unchanged stage/grade disclaimer and resource filtering. Desktop professional hero, mobile resource library and desktop stage/grade screenshots were inspected. Automated axe checks passed on home, contact and patient resources after including the visible secondary branding in the link’s accessible name.
 
 SHA-256 of both supplied and installed Cancer A–Z SVG: `3c927de6cb76dc75b0ceeac2111de072912ec0063b71ac108dba7f5f443493ed`. The primary logo configuration, original brand preparation status and favicon are unchanged. No hosting or publication was performed.
+
+## WhatsApp enquiry CTA update
+
+`WHATSAPP_URL` in `src/config/site.ts` is the single source for the supplied enquiry number. Header, homepage contact banner, patient access and professional collaboration buttons plus the contact-page WhatsApp button use the reusable component and a 20 px monochrome WhatsApp SVG. Existing labels, teal button styles and regular navigation/resource/email/Facebook links are preserved. The footer Contact entry remains an ordinary navigation link.
+
+Production build passed (18 static HTML pages); type check passed (41 files, no errors/warnings/hints). All 37 browser tests passed. Tests verify the destination and SVG on every content route, external target/rel attributes, mobile navigation and keyboard-created popup behaviour. Browser clicks to WhatsApp were fulfilled locally: no real WhatsApp request or message was sent, and account ownership/delivery was not verified. Responsive checks passed at 1440, 1280, 768 and 390 px; mobile homepage screenshot inspected. No deployment performed.
+
+Before upload, newer GitHub logo/favicon commits were fetched and preserved unchanged. The WhatsApp commit was rebased onto those commits without conflicts; the production build and all 37 browser tests passed again against the combined result. The resulting mobile homepage screenshot was inspected.

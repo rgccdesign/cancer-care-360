@@ -52,7 +52,7 @@ The development visuals are original, photorealistic generated illustrations; th
 
 ### Contact details
 
-Edit `site.facebook`, `site.email` and `site.whatsapp` in `src/config/site.ts`. The supplied official Facebook profile is available by default. Email and WhatsApp remain `null` until the owner provides real details. Use an international WhatsApp number containing digits only, without `+`, spaces or punctuation. The contact page renders only usable configured channels; it does not simulate form submission. Do not put credentials or private patient information in source files.
+Edit contact settings in `src/config/site.ts`. `WHATSAPP_URL` is the single source for the configured WhatsApp enquiry destination; `site.whatsapp` is derived from it for compatibility. The shared `WhatsAppCTA.astro` component adds the 20 px WhatsApp icon, existing button styling, a new-tab link and safe external-link attributes. Its `label`, optional `class` and `arrow` props preserve each button’s wording and placement. Ordinary Contact navigation still opens the contact page. The supplied Facebook profile remains available, and email stays unconfigured until a real address is provided. There is no simulated enquiry form. Do not put credentials or private patient information in source files.
 
 ### Videos, stories and webinars
 
