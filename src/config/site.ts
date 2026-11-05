@@ -9,6 +9,7 @@ export const site = {
   logoWidth: brandAssets.width,
   logoHeight: brandAssets.height,
   officialLogoConfigured: brandAssets.official,
+  endorsementLogo: '/images/brand/cancer-a-z.svg',
   facebook: 'https://www.facebook.com/profile.php?id=61595618420291',
   email: null as string | null,
   // International digits only, without a leading +, spaces or punctuation.

@@ -1,4 +1,5 @@
 ---
+import StageGradeVisual from '../../components/StageGradeVisual.astro';
 import CellGrowth from '../../components/CellGrowth.astro';
 import DiagnosticGrid from '../../components/DiagnosticGrid.astro';
 import Icon from '../../components/Icon.astro';
@@ -34,7 +35,7 @@ const faqs = [
       <div class="card-grid cancer-directory">{cancerTypes.map(cancer => <ContentCard title={cancer.name} description={cancer.summary} href={`/learn-about-cancer/${cancer.slug}/`} />)}</div>
     </section>
     <section class="section" id="stages" aria-labelledby="stages-title">
-      <p class="eyebrow">Understanding your results</p><h2 id="stages-title">Stages and grades tell you different things.</h2>
+      <div class="stage-section-heading"><div><p class="eyebrow">Understanding your results</p><h2 id="stages-title">Stages and grades tell you different things.</h2></div><StageGradeVisual/></div>
       <div class="card-grid two-columns"><article class="info-card"><span class="number-label">01 / Stage</span><h3>Where is the cancer?</h3><p>The stage describes how much cancer is present and whether it has spread. Many solid tumours use stages I to IV or a TNM system. Blood cancers and some other cancers use different systems.</p></article><article class="info-card"><span class="number-label">02 / Grade</span><h3>How do the cells look?</h3><p>The grade describes how abnormal the cells look under a microscope and can give clues about their likely behaviour. It is different from stage. The meaning varies by cancer type.</p></article></div>
       <p class="note">A stage or grade alone does not predict an individual’s future. Ask your specialist how it fits with the other findings in your case.</p>
     </section>

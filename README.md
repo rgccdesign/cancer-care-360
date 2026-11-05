@@ -86,3 +86,9 @@ The inline chat images are not present as downloadable PNG files in this workspa
 - `public/images/brand/cancer-care-360-icon.png`
 
 Run `npm run prepare:branding` from the project root. This preserves both originals, generates proportional 16/32/48/180 px PNG icons and an Apple touch icon, and records the original logo dimensions in `src/config/brand-assets.json`. Header, footer and head metadata then switch to the official assets on the next build. The interim branding remains active until both originals are supplied and processed; it must not be described as the official logo.
+
+## Internal page heroes and secondary branding
+
+`src/components/PageIntro.astro` supplies the shared gradient hero for internal pages. Edit `src/config/page-visuals.ts` to select page-specific visuals; the eight cancer guides use individual conceptual SVGs under `public/images/education/`. Hero copy remains in each page. The resource-library introduction and stage/grade visual preserve their existing filters, explanatory text and disclaimer.
+
+`src/components/Brand.astro` is shared by header and footer. Its secondary logo is the original user-supplied SVG at `public/images/brand/cancer-a-z.svg`, referenced centrally by `site.endorsementLogo`. Do not alter its aspect ratio or artwork. The existing primary Cancer Care 360 logo and favicon selection remain unchanged; original primary-brand assets are still pending.

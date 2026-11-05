@@ -25,3 +25,9 @@ Simple line icons are original project artwork. They do not represent certificat
 ## Visual enhancement assets
 
 `public/images/resources/team.webp` and `lab.webp` are original OpenAI-generated illustrations of professional collaboration and laboratory work. They do not document real clinicians, patients, partnerships or clinical results. Informative alt text identifies these as illustrations. The cell-growth comparison and diagnostic line diagrams are original conceptual SVG artwork, not diagnostic images; the cell comparison is not to scale.
+
+## Internal-header and endorsement update
+
+`public/images/brand/cancer-a-z.svg` is the user-supplied `AtZ Logo.svg`, copied byte-for-byte (870 × 316 intrinsic dimensions). Its artwork, colours and original SVG attributes are preserved. It appears below the current primary logo with the requested “By” line; the favicon is unchanged.
+
+`public/images/education/` contains original simplified vector illustrations for cancer-type guide headers and informational pages. These are conceptual educational symbols, not scans, patient data or diagnostic images. The stage/grade illustration is original conceptual artwork: location/extent and cellular appearance are presented as separate ideas without assigning stages, grades or prognosis. Clinical review remains required. Existing generated clinical illustrations retain their earlier provenance and are not represented as documentary photography.

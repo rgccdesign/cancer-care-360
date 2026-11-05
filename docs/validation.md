@@ -27,3 +27,9 @@ The current `dist/` and review archive deliberately contain an unconfigured prod
 Production build: passed, 18 HTML pages; Astro check: 36 files, zero errors/warnings/hints. All 33 browser tests passed. After a final adjustment placing the cell comparison alongside the existing text, the six affected educational/resource and four-viewport checks passed again. A desktop screenshot of the updated Learn section was inspected. Brand preparation was tested using temporary fixture images: all four icon sizes were correct and the source logo bytes were unchanged. This does not validate the official branding files, which remain unavailable as source attachments.
 
 Original PNGs are still required to finish official logo/favicon replacement. Current header/footer/favicon deliberately retain the interim assets. No official branding is reconstructed from the inline reference images.
+
+## Internal headers and Cancer A–Z update
+
+The static production build passed with 18 HTML pages. Final type check: 39 files, no errors, warnings or hints. All 35 browser tests passed, including shared heroes on all internal content routes, four viewport sizes, text/image separation, original secondary SVG loading, unchanged stage/grade disclaimer and resource filtering. Desktop professional hero, mobile resource library and desktop stage/grade screenshots were inspected. Automated axe checks passed on home, contact and patient resources after including the visible secondary branding in the link’s accessible name.
+
+SHA-256 of both supplied and installed Cancer A–Z SVG: `3c927de6cb76dc75b0ceeac2111de072912ec0063b71ac108dba7f5f443493ed`. The primary logo configuration, original brand preparation status and favicon are unchanged. No hosting or publication was performed.

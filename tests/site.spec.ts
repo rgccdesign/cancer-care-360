@@ -172,3 +172,37 @@ test('resource visual index and professional images support existing destination
   await page.goto('/healthcare-professionals/');
   await expect(page.locator('.editorial-figure img')).toHaveCount(2);
 });
+
+test('internal heroes, secondary branding and stage diagram use real assets', async ({page},testInfo) => {
+  for(const route of routes.filter(route => route !== '/')) {
+    await page.goto(route);
+    await expect(page.locator('.unified-intro .intro-visual img')).toBeVisible();
+    await expect(page.locator('header .brand-endorsement img')).toHaveAttribute('src','/images/brand/cancer-a-z.svg');
+    await expect(page.locator('footer .brand-endorsement img')).toHaveAttribute('alt','Cancer A–Z');
+  }
+  await page.goto('/learn-about-cancer/#stages');
+  await expect(page.locator('.stage-grade-visual svg')).toHaveCount(2);
+  await expect(page.locator('#stages .note')).toContainText('A stage or grade alone does not predict');
+  await page.screenshot({path:testInfo.outputPath('stages-desktop.png')});
+});
+
+test('internal hero imagery and library controls remain separate at requested widths', async ({page},testInfo) => {
+  for(const width of [1440,1280,768,390]) {
+    await page.setViewportSize({width,height:1000});
+    for(const route of ['/patient-resources/','/learn-about-cancer/breast-cancer/','/contact/','/privacy-policy/']) {
+      await page.goto(route);
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+      const copy=await page.locator('.intro-copy').boundingBox();
+      const image=await page.locator('.intro-visual').boundingBox();
+      expect(copy).toBeTruthy();expect(image).toBeTruthy();
+      if(width>640) expect(copy!.x+copy!.width).toBeLessThanOrEqual(image!.x+1);
+      else expect(copy!.y+copy!.height).toBeLessThanOrEqual(image!.y+1);
+    }
+    await page.goto('/patient-resources/#resource-library');
+    await page.getByRole('navigation',{name:'Filter resources'}).getByRole('link',{name:'Educational Videos',exact:true}).click();
+    await expect(page.locator('[data-resource-group="videos"]')).toBeVisible();
+    await page.screenshot({path:testInfo.outputPath(`library-${width}.png`)});
+    await page.goto('/healthcare-professionals/');
+    await page.screenshot({path:testInfo.outputPath(`professional-hero-${width}.png`)});
+  }
+});

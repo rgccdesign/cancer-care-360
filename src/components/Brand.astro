@@ -1,0 +1,6 @@
+---
+import { site } from '../config/site';
+interface Props { footer?: boolean }
+const {footer=false}=Astro.props;
+---
+<a href="/" class="brand brand-lockup"><img class="brand-primary" src={site.logo} alt="Cancer Care 360" width={site.logoWidth} height={site.logoHeight} loading={footer?'lazy':undefined} fetchpriority={footer?undefined:'high'}/><span class="brand-endorsement"><span>By</span><img src={site.endorsementLogo} alt="Cancer A–Z" width="870" height="316" loading={footer?'lazy':undefined}/></span><span class="sr-only">Home</span></a>
