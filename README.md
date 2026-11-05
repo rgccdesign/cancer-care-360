@@ -92,3 +92,7 @@ Run `npm run prepare:branding` from the project root. This preserves both origin
 `src/components/PageIntro.astro` supplies the shared gradient hero for internal pages. Edit `src/config/page-visuals.ts` to select page-specific visuals; the eight cancer guides use individual conceptual SVGs under `public/images/education/`. Hero copy remains in each page. The resource-library introduction and stage/grade visual preserve their existing filters, explanatory text and disclaimer.
 
 `src/components/Brand.astro` is shared by header and footer. Its secondary logo is the original user-supplied SVG at `public/images/brand/cancer-a-z.svg`, referenced centrally by `site.endorsementLogo`. Do not alter its aspect ratio or artwork. The existing primary Cancer Care 360 logo and favicon selection remain unchanged; original primary-brand assets are still pending.
+
+## Background and brand sizing tokens
+
+`src/styles/surfaces.css` defines the pale background palette, shared hero/page gradients and selected-section utilities (`section-surface` with `bg-section`, `bg-soft-blue`, `bg-resource` or `bg-lavender`). It also holds responsive header/footer logo sizes. The file is imported after the existing global styles. White cards, original SVG artwork and photo masks are preserved; no additional visual library is required.

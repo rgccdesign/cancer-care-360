@@ -30,7 +30,7 @@ const faqs = [
 
     </div><CellGrowth/>
 </section>
-    <section class="section" id="cancer-types" aria-labelledby="types-title">
+    <section class="section section-surface bg-soft-blue" id="cancer-types" aria-labelledby="types-title">
       <p class="eyebrow">Find a starting point</p><h2 id="types-title">Explore cancer types</h2><p class="section-intro">Each cancer is different. These short guides explain the basics and suggest questions for your next appointment.</p>
       <div class="card-grid cancer-directory">{cancerTypes.map(cancer => <ContentCard title={cancer.name} description={cancer.summary} href={`/learn-about-cancer/${cancer.slug}/`} />)}</div>
     </section>
@@ -39,7 +39,7 @@ const faqs = [
       <div class="card-grid two-columns"><article class="info-card"><span class="number-label">01 / Stage</span><h3>Where is the cancer?</h3><p>The stage describes how much cancer is present and whether it has spread. Many solid tumours use stages I to IV or a TNM system. Blood cancers and some other cancers use different systems.</p></article><article class="info-card"><span class="number-label">02 / Grade</span><h3>How do the cells look?</h3><p>The grade describes how abnormal the cells look under a microscope and can give clues about their likely behaviour. It is different from stage. The meaning varies by cancer type.</p></article></div>
       <p class="note">A stage or grade alone does not predict an individual’s future. Ask your specialist how it fits with the other findings in your case.</p>
     </section>
-    <section class="section" id="diagnosis" aria-labelledby="diagnosis-title">
+    <section class="section section-surface bg-resource" id="diagnosis" aria-labelledby="diagnosis-title">
       <p class="eyebrow">From a concern to an answer</p><h2 id="diagnosis-title">How cancer is diagnosed</h2><p class="section-intro">There is no single test that diagnoses every cancer. Your team chooses investigations based on your symptoms and circumstances.</p>
       <DiagnosticGrid/><ol class="steps"><li><h3>Conversation and examination</h3><p>A clinician reviews your symptoms, medical history and any relevant risk factors.</p></li><li><h3>Scans and laboratory tests</h3><p>Imaging and blood or other tests help look for changes and guide further assessment.</p></li><li><h3>A sample and specialist review</h3><p>A biopsy is often needed to confirm the diagnosis. Additional tests may identify features that help guide treatment.</p></li></ol>
     </section>
@@ -50,7 +50,7 @@ const faqs = [
       </div>
       <div class="inline-cta"><p>Want to understand how a tumour’s features may inform care?</p><Button href="/precision-medicine/" label="Explore Precision Medicine" /></div>
     </section>
-    <section class="section" id="faqs" aria-labelledby="faq-title"><p class="eyebrow">Your questions</p><h2 id="faq-title">A little more clarity.</h2><FAQ items={faqs} /></section>
+    <section class="section section-surface bg-lavender" id="faqs" aria-labelledby="faq-title"><p class="eyebrow">Your questions</p><h2 id="faq-title">A little more clarity.</h2><FAQ items={faqs} /></section>
     <section class="content-section references" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul class="source-list"><li><a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer" target="_blank" rel="noopener noreferrer">National Cancer Institute: What is cancer?</a></li><li><a href="https://www.cancer.gov/about-cancer/diagnosis-staging" target="_blank" rel="noopener noreferrer">National Cancer Institute: Diagnosis and staging</a></li><li><a href="https://www.cancer.gov/about-cancer/treatment/types" target="_blank" rel="noopener noreferrer">National Cancer Institute: Types of cancer treatment</a></li></ul><p class="note">Educational draft: clinical review is required before publication. This information cannot diagnose a condition or recommend a treatment for an individual.</p></section>
   </div>
 </MainLayout>

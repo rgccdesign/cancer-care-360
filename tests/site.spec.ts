@@ -246,3 +246,42 @@ test('homepage contact CTA opens WhatsApp from the keyboard without navigating t
   await popup.close();
   await expect(page).toHaveURL('/');
 });
+
+test('larger brand assets retain their proportions and fit beside navigation', async ({page},testInfo) => {
+  for(const [width,primaryWidth,endorsementWidth] of [[1440,270,120],[1280,270,120],[768,220,102],[390,185,85],[320,185,85]]) {
+    await page.setViewportSize({width,height:1000});
+    await page.goto('/');
+    await page.locator('footer').scrollIntoViewIfNeeded();
+    const logo=page.locator('header .brand-primary');
+    const endorsement=page.locator('header .brand-endorsement img');
+    await expect.poll(()=>logo.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);
+    for(const [image,expectedWidth] of [[logo,primaryWidth],[endorsement,endorsementWidth]] as const) {
+      const box=await image.boundingBox();expect(box).toBeTruthy();
+      expect(Math.abs(box!.width-expectedWidth)).toBeLessThan(1);
+      const ratio=await image.evaluate((el:HTMLImageElement)=>el.naturalWidth/el.naturalHeight);
+      expect(Math.abs(box!.width/box!.height-ratio)).toBeLessThan(.03);
+    }
+    const group=await page.locator('header .brand-lockup').boundingBox();
+    const adjacent=await page.locator(width>1100?'.primary-nav':'.menu-toggle').boundingBox();
+    expect(group!.x+group!.width).toBeLessThanOrEqual(adjacent!.x);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    expect((await page.locator('footer .brand-primary').boundingBox())!.width).toBeCloseTo(245,0);
+    expect((await page.locator('footer .brand-endorsement img').boundingBox())!.width).toBeCloseTo(112,0);
+    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.screenshot({path:testInfo.outputPath(`brand-surfaces-${width}.png`)});
+  }
+});
+
+test('shared pale surfaces cover the website and leave CTA styling intact', async ({page}) => {
+  for(const route of routes) {
+    await page.goto(route);
+    expect(await page.locator('main').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('linear-gradient');
+    expect(await page.locator('footer').evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('linear-gradient');
+    const hero=page.locator('.bg-hero');
+    await expect(hero).toHaveCount(1);
+    expect(await hero.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('linear-gradient');
+    const button=page.locator('header .whatsapp-cta');
+    expect(await button.evaluate(el=>getComputedStyle(el).backgroundImage)).toContain('linear-gradient');
+    await expect(button).toHaveAttribute('href','https://wa.me/85247503485');
+  }
+});

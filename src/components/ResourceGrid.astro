@@ -7,4 +7,4 @@ const resources = [
   { title: 'Expert Insights', icon: 'clipboard', type: 'insights' },
 ];
 ---
-<section class="quick-resources" aria-label="Explore resources">{resources.map(item => <a href={`/patient-resources/?type=${item.type}#resource-library`}><Icon name={item.icon} size={58}/><h2>{item.title}</h2></a>)}</section>
+<section class="quick-resources bg-resource" aria-label="Explore resources">{resources.map(item => <a href={`/patient-resources/?type=${item.type}#resource-library`}><Icon name={item.icon} size={58}/><h2>{item.title}</h2></a>)}</section>

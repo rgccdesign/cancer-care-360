@@ -1,0 +1,57 @@
+/* Quiet, reusable surfaces: keep text, cards and photography in the foreground. */
+:root {
+  --bg-white: #ffffff;
+  --bg-ice-blue: #f1f8fd;
+  --bg-pale-cyan: #eaf8fc;
+  --bg-soft-teal: #eaf8f5;
+  --bg-soft-lavender: #f5f2fc;
+  --gradient-hero: linear-gradient(115deg, var(--bg-white), var(--bg-ice-blue) 45%, var(--bg-soft-teal));
+  --gradient-page: linear-gradient(180deg, var(--bg-white) 0%, #fafdfe 38%, var(--bg-ice-blue) 75%, #f8fcfb 100%);
+  --gradient-section: linear-gradient(135deg, var(--bg-white), var(--bg-ice-blue));
+  --gradient-resource: radial-gradient(ellipse at 85% 20%, #05afa912, transparent 55%), linear-gradient(135deg, var(--bg-white), var(--bg-ice-blue));
+  --gradient-lavender: linear-gradient(120deg, var(--bg-soft-lavender), var(--bg-white) 80%);
+}
+main { background: var(--gradient-page); }
+.bg-section { --surface: var(--gradient-section); }
+.bg-soft-blue { --surface: linear-gradient(130deg, #f9fcff, var(--bg-ice-blue)); }
+.bg-resource { --surface: var(--gradient-resource); }
+.bg-lavender { --surface: var(--gradient-lavender); }
+.section-surface { position: relative; isolation: isolate; }
+.section-surface::before {
+  content: ''; position: absolute; inset: 0 -24px;
+  background: var(--surface, var(--gradient-section));
+  border-radius: 28px; z-index: -1; pointer-events: none;
+}
+.hero.bg-hero, .page-intro.unified-intro.bg-hero { background: var(--gradient-hero); }
+.quick-resources.bg-resource, .library-intro.bg-resource,
+.section.evaluation.bg-resource, .section.collaboration.bg-resource { background: var(--gradient-resource); }
+.info-card { background: #fff; border-color: #d9e8ef; box-shadow: 0 4px 18px #143a5507; }
+.site-footer { background: linear-gradient(125deg, var(--bg-ice-blue), #fff 85%); }
+/* The SVGs retain their complete artwork and intrinsic aspect ratios. */
+.site-header .brand.brand-lockup { width: 270px; gap: 4px; }
+.site-header .brand.brand-lockup .brand-endorsement img { width: 120px; height: auto; }
+.header-inner { height: auto; min-height: 120px; padding-block: 8px; }
+.brand-endorsement { gap: 8px; }
+.site-footer .brand.brand-lockup { width: 245px; max-width: 245px; gap: 4px; }
+.site-footer .brand.brand-lockup .brand-endorsement img { width: 112px; height: auto; }
+@media(max-width:1100px) {
+  .site-header .brand.brand-lockup { width: 220px; gap: 3px; }
+  .site-header .brand.brand-lockup .brand-endorsement img { width: 102px; }
+  .header-inner { min-height: 100px; padding-block: 6px; }
+}
+@media(max-width:640px) {
+  .site-header .brand.brand-lockup { width: 185px; gap: 2px; }
+  .site-header .brand.brand-lockup .brand-endorsement img { width: 85px; }
+  .header-inner { min-height: 96px; padding-block: 5px; }
+  .section-surface::before { inset-inline: -12px; border-radius: 22px; }
+}
+/* Collapse only the supplied wordmark's transparent layout space.
+   The complete SVG still renders, without clipping, cropping or distortion. */
+.site-header .brand-primary[src="/images/brand/wordmark.svg"] { margin-bottom: -35px; }
+.site-footer .brand-primary[src="/images/brand/wordmark.svg"] { margin-bottom: -32px; }
+@media(max-width:1100px) {
+  .site-header .brand-primary[src="/images/brand/wordmark.svg"] { margin-bottom: -28px; }
+}
+@media(max-width:640px) {
+  .site-header .brand-primary[src="/images/brand/wordmark.svg"] { margin-bottom: -24px; }
+}
