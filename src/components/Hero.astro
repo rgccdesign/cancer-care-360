@@ -1,0 +1,13 @@
+---
+import Button from './Button.astro';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <img class="hero-photo" src="/images/hero/consultation.webp" srcset="/images/hero/consultation-800.webp 800w, /images/hero/consultation.webp 1536w" sizes="(max-width: 640px) 100vw, 78vw" width="1536" height="1024" alt="Illustration of a patient and doctor discussing information on a tablet in a bright clinic" fetchpriority="high" />
+  <div class="hero-fade"></div>
+  <div class="container hero-content">
+    <h1 id="hero-title">Understand Cancer.<br />Explore Your Options.</h1>
+    <svg class="hero-underline" viewBox="0 0 310 38" aria-hidden="true"><path d="M8 29C98 0 192 2 302 22C196 4 110 16 11 37C2 39-4 32 8 29Z" fill="currentColor" /></svg>
+    <Button href="/learn-about-cancer/" label="Explore Now" />
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wave" x1="0" x2="1"><stop stop-color="#d9f6f7"/><stop offset="1" stop-color="#00b6b4"/></linearGradient></defs><path d="M600 123C920 8 1050 137 1440 0V140H600Z" fill="url(#wave)"/><path d="M1100 110C1245 82 1350 40 1440 2V140h-340Z" fill="#00a9ac"/><path d="M0 118C330 59 502 123 794 115S1128 26 1440 89V140H0Z" fill="white"/></svg>
+</section>

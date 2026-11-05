@@ -1,0 +1,29 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<MainLayout title="Privacy Policy" description="How Cancer Care 360 approaches privacy, external links and enquiries on this educational website." breadcrumbs={[{ label: 'Privacy Policy' }]}>
+  <PageIntro eyebrow="Your privacy" title="Privacy Policy" description="Clear information about this website and the choices you make when using it." />
+  <section class="container section prose legal-content">
+    <div class="note"><p>This policy describes the current static website. It must be reviewed and updated by the website operator before launch and whenever its services change.</p></div>
+    <h2>Using this website</h2>
+    <p>Cancer Care 360 provides cancer education. This version does not include a contact form, user accounts, advertising trackers or analytics. It does not ask you to upload medical records or submit a diagnosis.</p>
+    <h2>Hosting and technical information</h2>
+    <p>When you visit, the hosting provider may process technical information such as your IP address, browser details, requested pages and access times to deliver and secure the website. The operator should confirm the provider’s logging practices and retention periods before launch. We do not promise that visiting the site creates no technical records.</p>
+    <h2>Links to other services</h2>
+    <p>Some links lead to Facebook, video platforms, medical organisations or other external websites. Their own privacy policies apply when you visit them. External video links open on the provider’s website; no video player is loaded here automatically.</p>
+    <h2>Contacting Cancer Care 360</h2>
+    <p>If you choose to contact us through Facebook or another published contact channel, that service will handle your message under its own terms. Please keep enquiries general. Do not send medical records, identity documents, payment details or sensitive health information through social media or ordinary email.</p>
+    <h2>Cookies and local storage</h2>
+    <p>This site does not deliberately set analytics or advertising cookies. The hosting service and external services may have separate practices. Any future analytics, embedded media, forms or other data collection must be assessed and reflected in this policy before being enabled.</p>
+    <h2>Questions and requests</h2>
+    <p>Use the channels listed on our <a href="/contact/">contact page</a> for general privacy questions. The website operator must establish a suitable contact and any legally required procedures for privacy requests before public launch.</p>
+  </section>
+</MainLayout>
+
+<style>
+  .legal-content { max-width: 850px; }
+  .legal-content h2 { margin-top: 2rem; }
+  .legal-content .note p { margin: 0; }
+</style>

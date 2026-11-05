@@ -1,0 +1,8 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ResourceGrid from '../components/ResourceGrid.astro';
+import ContactBanner from '../components/ContactBanner.astro';
+---
+<MainLayout title="Home"><Hero/><div class="container home-sections"><section class="feature-grid" aria-label="Find your next step"><FeatureCard title="Learn About Cancer" href="/learn-about-cancer/" image="/images/cards/dna.webp" icon="book"/><FeatureCard title="Precision Medicine" href="/precision-medicine/" image="/images/cards/laboratory.webp" icon="microscope"/><FeatureCard title="Patient Resources" href="/patient-resources/" image="/images/cards/support.webp" icon="people" purple/></section><ResourceGrid/><ContactBanner/></div></MainLayout>

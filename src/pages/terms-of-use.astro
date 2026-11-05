@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<MainLayout title="Terms of Use" description="Terms for using the Cancer Care 360 educational website and its external resources." breadcrumbs={[{ label: 'Terms of Use' }]}>
+  <PageIntro eyebrow="Using our resources" title="Terms of Use" description="Please use this information as a starting point for conversations with your healthcare team." />
+  <section class="container section prose legal-content">
+    <div class="note"><p>These terms are a draft for operator and legal review before launch. They do not identify an operating legal entity or select a governing jurisdiction.</p></div>
+    <h2>Educational purpose</h2>
+    <p>Cancer Care 360 offers general information about cancer, testing, treatment and support. Reading this website or contacting its team does not establish a clinician–patient relationship. See our <a href="/medical-disclaimer/">Medical Disclaimer</a> for the limits of this information.</p>
+    <h2>Making healthcare decisions</h2>
+    <p>Discuss symptoms, test results and treatment choices with an appropriately qualified healthcare professional who knows your circumstances. Do not delay or change care because of information on this website.</p>
+    <h2>Accuracy and availability</h2>
+    <p>Medical knowledge and programme details change. Content may be incomplete or out of date, and the site may occasionally be unavailable. Linked sources provide additional context; check current information with the relevant organisation.</p>
+    <h2>External resources and programmes</h2>
+    <p>Links are provided for convenience. They do not establish an affiliation, endorsement, formal partnership or approval of any product or service. Testing, treatment and patient access programmes have their own evidence, eligibility criteria, costs and availability. No access or outcome is guaranteed.</p>
+    <h2>Respectful and lawful use</h2>
+    <p>Do not misuse the website, interfere with its operation or use contact channels to send unlawful material. Protect your privacy and the privacy of others; do not submit someone else’s health information without an appropriate basis.</p>
+    <h2>Content and permissions</h2>
+    <p>Logos, photographs and third-party materials may have separate rights and licence terms. A link or appearance on this website does not grant permission to reuse them. Contact the relevant rights holder before reproducing protected material beyond what applicable law permits.</p>
+    <h2>Changes and questions</h2>
+    <p>The operator may update this website and these terms as its services develop. For general questions, use our <a href="/contact/">contact page</a>. Nothing in these terms is intended to exclude rights or obligations that cannot lawfully be excluded.</p>
+  </section>
+</MainLayout>
+
+<style>
+  .legal-content { max-width: 850px; }
+  .legal-content h2 { margin-top: 2rem; }
+  .legal-content .note p { margin: 0; }
+</style>

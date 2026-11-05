@@ -1,0 +1,53 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContentCard from '../../components/ContentCard.astro';
+import Button from '../../components/Button.astro';
+import { cancerTypes } from '../../content/cancers';
+
+const faqs = [
+  { question: 'Is cancer one disease?', answer: 'No. Cancer is a large group of diseases. Even cancers that start in the same organ can have different features and need different treatment.' },
+  { question: 'Does a symptom mean I have cancer?', answer: 'Many symptoms have causes other than cancer. A new, persistent or unexplained change should be assessed by a healthcare professional. Online information cannot establish a diagnosis.' },
+  { question: 'Is cancer inherited?', answer: 'Most cancers are not caused by an inherited cancer-risk change. Some families have inherited variants that increase risk. Your care team can advise whether genetic counselling or inherited-risk testing is appropriate.' },
+  { question: 'Can I ask for a second opinion?', answer: 'Yes. A second opinion can help clarify a diagnosis or treatment plan. Ask your care team how to arrange one and whether any delay would affect your care.' },
+  { question: 'How can I prepare for an appointment?', answer: 'Write down your questions, bring a current medicines list and ask whether someone can join you. Ask your clinician to explain any unfamiliar words, the goal of each test and what happens next.' },
+];
+---
+<MainLayout title="Learn About Cancer" description="Understand cancer, diagnosis, stages and treatment options in plain language. Explore eight cancer-type guides and questions to discuss with your care team." breadcrumbs={[{ label: 'Learn About Cancer' }]}>
+  <PageIntro eyebrow="Learn about cancer" title="Understanding Cancer, One Step at a Time." description="Clear information can help you ask questions, understand your diagnosis and take part in decisions about your care." image="/images/cards/dna.webp" />
+  <div class="container">
+    <nav class="topic-nav" aria-label="On this page">
+      <a href="#what-is-cancer">The basics</a><a href="#cancer-types">Cancer types</a><a href="#stages">Stages & grades</a><a href="#diagnosis">Diagnosis</a><a href="#treatment">Treatment</a><a href="#faqs">FAQs</a>
+    </nav>
+    <section class="section basics" id="what-is-cancer" aria-labelledby="basics-title">
+      <div><p class="eyebrow">Start with the basics</p><h2 id="basics-title">What is cancer?</h2><p>Cancer develops when some cells grow and divide without the usual controls. They may grow into nearby tissue. Some cancer cells can also travel to other parts of the body.</p><p>Many cancers form a tumour, but blood cancers such as leukaemia usually do not. Not every lump or tumour is cancer.</p></div>
+      <div class="info-card"><h3>How cancer develops</h3><p>Changes in a cell’s DNA can affect how it grows, repairs damage or dies. These changes can build up with age, happen by chance or follow exposures such as tobacco smoke. Some are inherited.</p><p>Having a risk factor does not mean a person will develop cancer. A diagnosis is never a reason for blame.</p></div>
+    </section>
+    <section class="section" id="cancer-types" aria-labelledby="types-title">
+      <p class="eyebrow">Find a starting point</p><h2 id="types-title">Explore cancer types</h2><p class="section-intro">Each cancer is different. These short guides explain the basics and suggest questions for your next appointment.</p>
+      <div class="card-grid cancer-directory">{cancerTypes.map(cancer => <ContentCard title={cancer.name} description={cancer.summary} href={`/learn-about-cancer/${cancer.slug}/`} />)}</div>
+    </section>
+    <section class="section" id="stages" aria-labelledby="stages-title">
+      <p class="eyebrow">Understanding your results</p><h2 id="stages-title">Stages and grades tell you different things.</h2>
+      <div class="card-grid two-columns"><article class="info-card"><span class="number-label">01 / Stage</span><h3>Where is the cancer?</h3><p>The stage describes how much cancer is present and whether it has spread. Many solid tumours use stages I to IV or a TNM system. Blood cancers and some other cancers use different systems.</p></article><article class="info-card"><span class="number-label">02 / Grade</span><h3>How do the cells look?</h3><p>The grade describes how abnormal the cells look under a microscope and can give clues about their likely behaviour. It is different from stage. The meaning varies by cancer type.</p></article></div>
+      <p class="note">A stage or grade alone does not predict an individual’s future. Ask your specialist how it fits with the other findings in your case.</p>
+    </section>
+    <section class="section" id="diagnosis" aria-labelledby="diagnosis-title">
+      <p class="eyebrow">From a concern to an answer</p><h2 id="diagnosis-title">How cancer is diagnosed</h2><p class="section-intro">There is no single test that diagnoses every cancer. Your team chooses investigations based on your symptoms and circumstances.</p>
+      <ol class="steps"><li><h3>Conversation and examination</h3><p>A clinician reviews your symptoms, medical history and any relevant risk factors.</p></li><li><h3>Scans and laboratory tests</h3><p>Imaging and blood or other tests help look for changes and guide further assessment.</p></li><li><h3>A sample and specialist review</h3><p>A biopsy is often needed to confirm the diagnosis. Additional tests may identify features that help guide treatment.</p></li></ol>
+    </section>
+    <section class="section" id="treatment" aria-labelledby="treatment-title">
+      <p class="eyebrow">Understanding your options</p><h2 id="treatment-title">Treatment is planned around you.</h2><p class="section-intro">The cancer type, stage, test results, overall health and your preferences all matter. Treatments may be used alone or together.</p>
+      <div class="card-grid treatment-grid">
+        <article class="info-card"><h3>Surgery</h3><p>Removes cancer from a specific area when suitable.</p></article><article class="info-card"><h3>Radiotherapy</h3><p>Uses carefully targeted radiation to treat cancer.</p></article><article class="info-card"><h3>Chemotherapy</h3><p>Uses medicines that kill or slow rapidly dividing cells.</p></article><article class="info-card"><h3>Targeted & hormone therapies</h3><p>Act on particular cancer features or hormone signals.</p></article><article class="info-card"><h3>Immunotherapy</h3><p>Helps the immune system recognise or attack certain cancers.</p></article><article class="info-card"><h3>Supportive & palliative care</h3><p>Helps manage symptoms and quality of life at any stage, alongside other treatment.</p></article>
+      </div>
+      <div class="inline-cta"><p>Want to understand how a tumour’s features may inform care?</p><Button href="/precision-medicine/" label="Explore Precision Medicine" /></div>
+    </section>
+    <section class="section" id="faqs" aria-labelledby="faq-title"><p class="eyebrow">Your questions</p><h2 id="faq-title">A little more clarity.</h2><FAQ items={faqs} /></section>
+    <section class="content-section references" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul class="source-list"><li><a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer" target="_blank" rel="noopener noreferrer">National Cancer Institute: What is cancer?</a></li><li><a href="https://www.cancer.gov/about-cancer/diagnosis-staging" target="_blank" rel="noopener noreferrer">National Cancer Institute: Diagnosis and staging</a></li><li><a href="https://www.cancer.gov/about-cancer/treatment/types" target="_blank" rel="noopener noreferrer">National Cancer Institute: Types of cancer treatment</a></li></ul><p class="note">Educational draft: clinical review is required before publication. This information cannot diagnose a condition or recommend a treatment for an individual.</p></section>
+  </div>
+</MainLayout>
+<style>
+.topic-nav{display:flex;flex-wrap:wrap;gap:10px 24px;padding:24px 0;border-bottom:1px solid #dbe8ee}.topic-nav a{font-size:.9rem;font-weight:600;text-underline-offset:5px}.basics{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.basics p{max-width:62ch}.section-intro{max-width:68ch;margin-bottom:28px;color:#526375}.cancer-directory{grid-template-columns:repeat(4,minmax(0,1fr))}.two-columns{grid-template-columns:repeat(2,minmax(0,1fr))}.number-label{color:#007e87;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.steps{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0;gap:28px}.steps li{counter-increment:step;position:relative;padding:28px;border:1px solid #dbe8ee;border-radius:20px}.steps li::before{content:'0' counter(step);display:block;color:#007e87;font-weight:700;margin-bottom:18px}.treatment-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:32px;padding:28px;background:#f2f9fc;border-radius:20px}.inline-cta p{margin:0}.references{padding-bottom:50px}.references h2{font-size:1.3rem}@media(max-width:1000px){.cancer-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.basics{gap:28px}.steps{gap:16px}.steps li{padding:22px}}@media(max-width:700px){.basics,.two-columns,.steps,.treatment-grid{grid-template-columns:1fr}.inline-cta{align-items:flex-start;flex-direction:column}.topic-nav{gap:14px 20px}}@media(max-width:440px){.cancer-directory{grid-template-columns:1fr}}
+</style>

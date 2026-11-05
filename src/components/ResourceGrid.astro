@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+const resources = [
+  { title: 'Educational Videos', icon: 'video', type: 'videos' },
+  { title: 'Patient Stories', icon: 'people', type: 'stories' },
+  { title: 'Webinars', icon: 'calendar', type: 'webinars' },
+  { title: 'Expert Insights', icon: 'clipboard', type: 'insights' },
+];
+---
+<section class="quick-resources" aria-label="Explore resources">{resources.map(item => <a href={`/patient-resources/?type=${item.type}#resource-library`}><Icon name={item.icon} size={58}/><h2>{item.title}</h2></a>)}</section>

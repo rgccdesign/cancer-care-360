@@ -1,0 +1,25 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Button from '../../components/Button.astro';
+import { cancerTypes } from '../../content/cancers';
+
+export function getStaticPaths() {
+  return cancerTypes.map(cancer => ({ params: { slug: cancer.slug }, props: { cancer } }));
+}
+const { cancer } = Astro.props;
+---
+<MainLayout title={cancer.name} description={cancer.summary} breadcrumbs={[{ label: 'Learn About Cancer', href: '/learn-about-cancer/' }, { label: cancer.name }]}>
+  <PageIntro eyebrow="Cancer type guide" title={cancer.name} description={cancer.summary} />
+  <div class="container type-content">
+    <section class="section overview" aria-labelledby="overview-title"><div><p class="eyebrow">The essentials</p><h2 id="overview-title">Understanding {cancer.name.toLowerCase()}</h2><p>{cancer.overview}</p></div><aside class="info-card"><h3>Changes worth checking</h3><ul>{cancer.symptoms.map(symptom => <li>{symptom}</li>)}</ul><p class="small">These changes can have many causes. Arrange an assessment for persistent or unexplained symptoms. Seek urgent help for severe symptoms such as significant bleeding or breathing difficulty.</p></aside></section>
+    <div class="card-grid two-columns"><section class="info-card" aria-labelledby="diagnosis-title"><p class="eyebrow">Getting answers</p><h2 id="diagnosis-title">Diagnosis & assessment</h2><p>{cancer.diagnosis}</p></section><section class="info-card" aria-labelledby="treatment-title"><p class="eyebrow">Planning care</p><h2 id="treatment-title">Treatment overview</h2><p>{cancer.treatment}</p></section></div>
+    <section class="section questions" aria-labelledby="questions-title"><div><p class="eyebrow">Your next appointment</p><h2 id="questions-title">Questions for your care team</h2><p>You do not have to remember everything at once. Bring a list, take notes and ask for explanations in plain language.</p></div><ol>{cancer.questions.map(question => <li>{question}</li>)}</ol></section>
+    <aside class="note"><strong>Your circumstances matter.</strong> This is an introduction, rather than a treatment recommendation. Ask your specialist how the information applies to your diagnosis and local care options.</aside>
+    <section class="content-section references" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul class="source-list"><li><a href={cancer.source} target="_blank" rel="noopener noreferrer">National Cancer Institute: {cancer.name}</a></li><li><a href="https://www.cancer.gov/about-cancer/treatment/questions" target="_blank" rel="noopener noreferrer">National Cancer Institute: Questions to ask about treatment</a></li></ul><p class="note">Educational draft: clinical review is required before publication.</p></section>
+    <div class="guide-actions"><Button href="/learn-about-cancer/#cancer-types" label="Explore Other Cancer Types" /><a href="/patient-resources/">Find patient resources →</a></div>
+  </div>
+</MainLayout>
+<style>
+.type-content{max-width:1120px}.overview{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}.overview p{max-width:60ch}.info-card ul{padding-left:20px}.info-card li{margin-bottom:10px}.small{font-size:.9rem;color:#526375}.two-columns{grid-template-columns:repeat(2,minmax(0,1fr))}.two-columns h2{font-size:1.5rem}.questions{display:grid;grid-template-columns:1fr 1fr;gap:50px}.questions ol{margin:0;padding:0;list-style:none;counter-reset:question}.questions li{counter-increment:question;padding:18px 0 18px 44px;border-bottom:1px solid #dbe8ee;position:relative}.questions li::before{content:'0' counter(question);position:absolute;left:0;color:#007e87;font-weight:700}.references{margin-top:40px}.references h2{font-size:1.3rem}.guide-actions{display:flex;align-items:center;gap:30px;padding:20px 0 60px}.guide-actions>a:last-child{font-weight:600}@media(max-width:700px){.overview,.two-columns,.questions{grid-template-columns:1fr;gap:24px}.guide-actions{align-items:flex-start;flex-direction:column;gap:20px}}
+</style>

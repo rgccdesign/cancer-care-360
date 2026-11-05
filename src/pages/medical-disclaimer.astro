@@ -1,0 +1,30 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<MainLayout title="Medical Disclaimer" description="The educational purpose and clinical limits of Cancer Care 360 information, testing explanations and resources." breadcrumbs={[{ label: 'Medical Disclaimer' }]}>
+  <PageIntro eyebrow="Information with care" title="Medical Disclaimer" description="General education can help you ask questions. Your healthcare team provides advice for your individual care." />
+  <section class="container section prose legal-content">
+    <div class="note"><p>This website provides general cancer information and educational resources. It does not replace professional medical advice, diagnosis or treatment.</p></div>
+    <h2>Your care is individual</h2>
+    <p>Information on this site cannot account for your medical history, symptoms, test results or preferences. Seek advice from an appropriately qualified healthcare professional about any health concern. Never disregard professional advice, delay seeking care or start, stop or change treatment because of something you read here.</p>
+    <h2>Urgent concerns</h2>
+    <p>This website and its contact channels do not provide emergency assessment or urgent clinical advice. If you believe you have a medical emergency, contact your local emergency service. For urgent problems during cancer treatment, use the instructions and emergency contact number supplied by your treating team.</p>
+    <h2>Tests and precision medicine</h2>
+    <p>Laboratory tests may provide additional information. Their relevance depends on the specific test, cancer type, patient circumstances and available clinical evidence. A result does not guarantee that a treatment will be suitable or effective. Some tests and approaches remain investigational. Test explanations do not replace specialist assessment or standard diagnostic and treatment pathways.</p>
+    <h2>Treatments and access programmes</h2>
+    <p>Mentioning a medicine, test, organisation or programme is not a recommendation or endorsement. Availability, regulatory status, funding and eligibility differ by location and can change. Cancer Care 360 does not guarantee programme enrolment, treatment response or a particular outcome.</p>
+    <h2>Stories and external resources</h2>
+    <p>Individual experiences, if published with consent, do not predict another person’s outcome. External resources have their own authors and review processes. Discuss any information that may affect your care with your healthcare team.</p>
+    <h2>Clinical review</h2>
+    <p>The educational content is a draft requiring review by an appropriately qualified clinical professional before public launch. Source links support further reading and do not imply that the source organisation has reviewed or endorsed this website.</p>
+    <p>For general, non-urgent enquiries, visit our <a href="/contact/">contact page</a>.</p>
+  </section>
+</MainLayout>
+
+<style>
+  .legal-content { max-width: 850px; }
+  .legal-content h2 { margin-top: 2rem; }
+  .legal-content .note p { margin: 0; }
+</style>

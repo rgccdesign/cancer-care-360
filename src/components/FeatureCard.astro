@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+interface Props { title: string; href: string; image: string; icon: string; purple?: boolean }
+const { title, href, image, icon, purple = false } = Astro.props;
+const titleLines = title === 'Learn About Cancer' ? ['Learn', 'About Cancer'] : title.split(' ');
+---
+<a href={href} class:list={['feature-card', {purple}]}>
+  <img src={image} alt="" width="768" height="512" loading="lazy" />
+  <div class="feature-card-content"><Icon name={icon} size={53} /><h2>{title === 'Learn About Cancer' ? titleLines.map(line => <span style="display:block">{line}</span>) : title}</h2><span class="circle-arrow"><Icon name="arrow" size={23} /></span></div>
+</a>

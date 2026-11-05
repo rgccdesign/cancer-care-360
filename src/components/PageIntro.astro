@@ -1,0 +1,5 @@
+---
+interface Props { eyebrow?: string; title: string; description?: string; image?: string }
+const { eyebrow, title, description, image } = Astro.props;
+---
+<section class:list={['page-intro', { 'has-image': image }]}><div class="container page-intro-inner"><div>{eyebrow && <p class="eyebrow">{eyebrow}</p>}<h1>{title}</h1>{description && <p class="intro-description">{description}</p>}</div>{image && <img src={image} alt="" width="600" height="400" fetchpriority="high" />}</div></section>
