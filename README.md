@@ -77,3 +77,12 @@ This repository does not deploy automatically. No hosting credentials are needed
 ## Before launch
 
 Complete [`docs/launch-checklist.md`](docs/launch-checklist.md). In particular, configure the real domain, supply the original logo, approve image rights, review the medical and legal text and confirm the contact channels. Clinical and legal copy is a reviewable draft, not approved advice or a final legal assessment.
+
+## Install the supplied official branding
+
+The inline chat images are not present as downloadable PNG files in this workspace. Once the originals are attached, copy them without modifying the source artwork to:
+
+- `public/images/brand/cancer-care-360-logo.png`
+- `public/images/brand/cancer-care-360-icon.png`
+
+Run `npm run prepare:branding` from the project root. This preserves both originals, generates proportional 16/32/48/180 px PNG icons and an Apple touch icon, and records the original logo dimensions in `src/config/brand-assets.json`. Header, footer and head metadata then switch to the official assets on the next build. The interim branding remains active until both originals are supplied and processed; it must not be described as the official logo.

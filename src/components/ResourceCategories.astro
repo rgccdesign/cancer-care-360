@@ -1,0 +1,5 @@
+---
+import Icon from './Icon.astro';
+const categories=[['Educational Videos','video','?type=videos#resource-library','/images/resources/doctor.webp'],['Patient Stories','people','?type=stories#resource-library','/images/cards/support.webp'],['Webinars','calendar','?type=webinars#resource-library','/images/resources/team.webp'],['Patient Access Programmes','shield','#access-programmes','/images/cards/support.webp'],['Expert Insights','clipboard','?type=insights#resource-library','/images/resources/lab.webp'],['Frequently Asked Questions','question','#faqs','/images/hero/consultation-800.webp']];
+---
+<nav class="visual-categories" aria-label="Browse patient resources">{categories.map(([title,icon,href,image])=><a href={href}><img src={image} alt="" width="600" height="400" loading="lazy"/><span><Icon name={icon} size={28}/><strong>{title}</strong><Icon name="arrow" size={18}/></span></a>)}</nav>

@@ -1,0 +1,5 @@
+---
+import Icon from './Icon.astro';
+const methods=[{title:'Medical imaging',icon:'scan',description:'Scans help clinicians look inside the body.'},{title:'Tissue biopsy',icon:'sample',description:'A tissue sample can be examined for cancer cells.'},{title:'Blood testing',icon:'blood',description:'Blood samples provide information about cells and body function.'},{title:'Laboratory analysis',icon:'microscope',description:'Specialists examine samples and interpret test findings.'}];
+---
+<div class="diagnostic-grid">{methods.map(m=><article><div class="diagnostic-art"><Icon name={m.icon} size={58}/></div><h3>{m.title}</h3><p>{m.description}</p></article>)}</div>

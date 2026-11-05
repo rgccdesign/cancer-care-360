@@ -8,7 +8,8 @@
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "build": "npm run check && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --host 0.0.0.0",
-    "test": "playwright test"
+    "test": "playwright test",
+    "prepare:branding": "node scripts/prepare-branding.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

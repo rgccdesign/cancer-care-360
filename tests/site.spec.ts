@@ -150,3 +150,25 @@ for (const route of ['/', '/contact/', '/patient-resources/']) {
     expect(significant.map(violation => ({ id: violation.id, help: violation.help, nodes: violation.nodes.map(node => ({ target: node.target, summary: node.failureSummary })) }))).toEqual([]);
   });
 }
+
+test('educational visuals explain cell growth and diagnosis without replacing the text', async ({page}, testInfo) => {
+  await page.goto('/learn-about-cancer/');
+  await expect(page.locator('.cell-growth svg')).toHaveCount(2);
+  await page.screenshot({path:testInfo.outputPath('learn-desktop.png')});
+  await expect(page.locator('.cell-growth')).toContainText('not to scale');
+  await expect(page.locator('.diagnostic-grid article')).toHaveCount(4);
+  await expect(page.locator('.treatment-grid article > svg')).toHaveCount(6);
+  await page.goto('/precision-medicine/');
+  await expect(page.locator('.evaluation-steps li > svg')).toHaveCount(4);
+});
+
+test('resource visual index and professional images support existing destinations', async ({page}) => {
+  await page.goto('/patient-resources/');
+  const categories=page.getByRole('navigation',{name:'Browse patient resources'});
+  await expect(categories.locator('a')).toHaveCount(6);
+  await categories.getByRole('link',{name:'Webinars',exact:true}).click();
+  await expect(page.locator('[data-resource-group="webinars"]')).toBeVisible();
+  await expect(page.locator('[data-resource-group="videos"]')).toBeHidden();
+  await page.goto('/healthcare-professionals/');
+  await expect(page.locator('.editorial-figure img')).toHaveCount(2);
+});

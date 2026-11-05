@@ -21,3 +21,7 @@ Original photorealistic illustrations are being generated with OpenAI image gene
 ## Icons
 
 Simple line icons are original project artwork. They do not represent certifications, partnerships or approvals. Record any future third-party icon library and its licence here before introducing it.
+
+## Visual enhancement assets
+
+`public/images/resources/team.webp` and `lab.webp` are original OpenAI-generated illustrations of professional collaboration and laboratory work. They do not document real clinicians, patients, partnerships or clinical results. Informative alt text identifies these as illustrations. The cell-growth comparison and diagnostic line diagrams are original conceptual SVG artwork, not diagnostic images; the cell comparison is not to scale.

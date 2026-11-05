@@ -21,3 +21,9 @@ Automated accessibility checks do not establish full WCAG compliance. Manual ass
 External reference content could not be verified live: the environment proxy rejected CONNECT requests to `mycancerinfo.org` and `www.cancer.gov` with HTTP 403. Other external resource links have not been exhaustively validated. Recheck sources before launch.
 
 The current `dist/` and review archive deliberately contain an unconfigured production origin. Set the real `SITE_URL` and rebuild before deployment. The original logo, real licensed photography or approval of the generated illustrations, clinical/legal review and any additional contact channels remain launch items. No deployment or publication was performed.
+
+## Visual enhancement validation
+
+Production build: passed, 18 HTML pages; Astro check: 36 files, zero errors/warnings/hints. All 33 browser tests passed. After a final adjustment placing the cell comparison alongside the existing text, the six affected educational/resource and four-viewport checks passed again. A desktop screenshot of the updated Learn section was inspected. Brand preparation was tested using temporary fixture images: all four icon sizes were correct and the source logo bytes were unchanged. This does not validate the official branding files, which remain unavailable as source attachments.
+
+Original PNGs are still required to finish official logo/favicon replacement. Current header/footer/favicon deliberately retain the interim assets. No official branding is reconstructed from the inline reference images.

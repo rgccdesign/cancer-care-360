@@ -1,4 +1,7 @@
 ---
+import CellGrowth from '../../components/CellGrowth.astro';
+import DiagnosticGrid from '../../components/DiagnosticGrid.astro';
+import Icon from '../../components/Icon.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import FAQ from '../../components/FAQ.astro';
@@ -21,9 +24,11 @@ const faqs = [
       <a href="#what-is-cancer">The basics</a><a href="#cancer-types">Cancer types</a><a href="#stages">Stages & grades</a><a href="#diagnosis">Diagnosis</a><a href="#treatment">Treatment</a><a href="#faqs">FAQs</a>
     </nav>
     <section class="section basics" id="what-is-cancer" aria-labelledby="basics-title">
-      <div><p class="eyebrow">Start with the basics</p><h2 id="basics-title">What is cancer?</h2><p>Cancer develops when some cells grow and divide without the usual controls. They may grow into nearby tissue. Some cancer cells can also travel to other parts of the body.</p><p>Many cancers form a tumour, but blood cancers such as leukaemia usually do not. Not every lump or tumour is cancer.</p></div>
+      <div><p class="eyebrow">Start with the basics</p><h2 id="basics-title">What is cancer?</h2><p>Cancer develops when some cells grow and divide without the usual controls. They may grow into nearby tissue. Some cancer cells can also travel to other parts of the body.</p><p>Many cancers form a tumour, but blood cancers such as leukaemia usually do not. Not every lump or tumour is cancer.</p>
       <div class="info-card"><h3>How cancer develops</h3><p>Changes in a cell’s DNA can affect how it grows, repairs damage or dies. These changes can build up with age, happen by chance or follow exposures such as tobacco smoke. Some are inherited.</p><p>Having a risk factor does not mean a person will develop cancer. A diagnosis is never a reason for blame.</p></div>
-    </section>
+
+    </div><CellGrowth/>
+</section>
     <section class="section" id="cancer-types" aria-labelledby="types-title">
       <p class="eyebrow">Find a starting point</p><h2 id="types-title">Explore cancer types</h2><p class="section-intro">Each cancer is different. These short guides explain the basics and suggest questions for your next appointment.</p>
       <div class="card-grid cancer-directory">{cancerTypes.map(cancer => <ContentCard title={cancer.name} description={cancer.summary} href={`/learn-about-cancer/${cancer.slug}/`} />)}</div>
@@ -35,12 +40,12 @@ const faqs = [
     </section>
     <section class="section" id="diagnosis" aria-labelledby="diagnosis-title">
       <p class="eyebrow">From a concern to an answer</p><h2 id="diagnosis-title">How cancer is diagnosed</h2><p class="section-intro">There is no single test that diagnoses every cancer. Your team chooses investigations based on your symptoms and circumstances.</p>
-      <ol class="steps"><li><h3>Conversation and examination</h3><p>A clinician reviews your symptoms, medical history and any relevant risk factors.</p></li><li><h3>Scans and laboratory tests</h3><p>Imaging and blood or other tests help look for changes and guide further assessment.</p></li><li><h3>A sample and specialist review</h3><p>A biopsy is often needed to confirm the diagnosis. Additional tests may identify features that help guide treatment.</p></li></ol>
+      <DiagnosticGrid/><ol class="steps"><li><h3>Conversation and examination</h3><p>A clinician reviews your symptoms, medical history and any relevant risk factors.</p></li><li><h3>Scans and laboratory tests</h3><p>Imaging and blood or other tests help look for changes and guide further assessment.</p></li><li><h3>A sample and specialist review</h3><p>A biopsy is often needed to confirm the diagnosis. Additional tests may identify features that help guide treatment.</p></li></ol>
     </section>
     <section class="section" id="treatment" aria-labelledby="treatment-title">
       <p class="eyebrow">Understanding your options</p><h2 id="treatment-title">Treatment is planned around you.</h2><p class="section-intro">The cancer type, stage, test results, overall health and your preferences all matter. Treatments may be used alone or together.</p>
       <div class="card-grid treatment-grid">
-        <article class="info-card"><h3>Surgery</h3><p>Removes cancer from a specific area when suitable.</p></article><article class="info-card"><h3>Radiotherapy</h3><p>Uses carefully targeted radiation to treat cancer.</p></article><article class="info-card"><h3>Chemotherapy</h3><p>Uses medicines that kill or slow rapidly dividing cells.</p></article><article class="info-card"><h3>Targeted & hormone therapies</h3><p>Act on particular cancer features or hormone signals.</p></article><article class="info-card"><h3>Immunotherapy</h3><p>Helps the immune system recognise or attack certain cancers.</p></article><article class="info-card"><h3>Supportive & palliative care</h3><p>Helps manage symptoms and quality of life at any stage, alongside other treatment.</p></article>
+        <article class="info-card"><Icon name="cross" size={32}/><h3>Surgery</h3><p>Removes cancer from a specific area when suitable.</p></article><article class="info-card"><Icon name="target" size={32}/><h3>Radiotherapy</h3><p>Uses carefully targeted radiation to treat cancer.</p></article><article class="info-card"><Icon name="sample" size={32}/><h3>Chemotherapy</h3><p>Uses medicines that kill or slow rapidly dividing cells.</p></article><article class="info-card"><Icon name="cell" size={32}/><h3>Targeted & hormone therapies</h3><p>Act on particular cancer features or hormone signals.</p></article><article class="info-card"><Icon name="shield" size={32}/><h3>Immunotherapy</h3><p>Helps the immune system recognise or attack certain cancers.</p></article><article class="info-card"><Icon name="person" size={32}/><h3>Supportive & palliative care</h3><p>Helps manage symptoms and quality of life at any stage, alongside other treatment.</p></article>
       </div>
       <div class="inline-cta"><p>Want to understand how a tumour’s features may inform care?</p><Button href="/precision-medicine/" label="Explore Precision Medicine" /></div>
     </section>
